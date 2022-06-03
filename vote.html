@@ -30,9 +30,73 @@
         </div>
     </nav>
 
-    <!-- intro page -->
+    <!-- vote page -->
 
+    <div class="container-md">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-md-4">
+            <img src="/assets/vanillaIceCream.jpg" width="500" height="400" alt="">
+          </div>
+          <div class="col-md-4">
+            <img src="/assets/vanillaIceCream.jpg" width="500" height="400" alt="">
+          </div>          <div class="col-md-4">
+            <img src="/assets/vanillaIceCream.jpg" width="500" height="400" alt="">
+          </div>
+        </div>
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-4">
+              <img src="/assets/vanillaIceCream.jpg" width="500" height="400" alt="">
+            </div>
+            <div class="col-md-4">
+              <img src="/assets/vanillaIceCream.jpg" width="500" height="400" alt="">
+            </div>          <div class="col-md-4">
+              <img src="/assets/vanillaIceCream.jpg" width="500" height="400" alt="">
+            </div>
+          </div>
 
+          <div class="input-group">
+            <select class="custom-select" id="inputOpt" aria-label="select with button addon">
+              <option selected>Choose...</option>
+              <option value="Vanilla">Vanilla</option>
+              <option value="Chocolate">Chocolate</option>
+              <option value="Banana">Banana</option>
+              <option value="Mint-Chocolate-Chip">Mint-Chocolate-Chip</option>
+              <option value="Coconut">Coconut</option>
+              <option value="Strawberry">Strawberry</option>
+            </select>
+            <div class="input-group-append">
+              <button class="btn btn-outline-primary" onclick="addVote()">Vote</button>
+            </div>
+          </div>
+
+      </div>
+
+      <script>
+          let votes = [];
+
+          const addVote = () => {
+              let found = false;
+              let count = 0;
+              let d = document.getElementById('inputOpt').value;
+              votes.forEach(obj => {
+                  if (obj.name === d) {
+                        console.log(obj);
+                      votes[count].voteCount = votes[count].voteCount + 1;
+                      found = true;
+                  }
+                  count++;
+              })
+              if (found === false) {
+                  votes.push( { name: d, voteCount: 1});
+              }
+
+              // putting into local storage
+
+              localStorage.setItem('votesList', JSON.stringify(votes));
+
+              alert("You have successfully put in your vote!");
+          }
+      </script>
 
     <!-- bootstrap js -->
 
